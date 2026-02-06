@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Bếp Nhà NGÀ - Chân Gà Sả Tắc</title>
+    <meta name="description"
+        content="Chân gà sả tắc Bếp Nhà NGÀ siêu ngon, giòn sần sật, đậm đà khó cưỡng (Không chất bảo quản - Homemade).">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-content">
+            <div class="brand">
+                <img src="logo-bepnhanga.png" alt="Bếp Nhà NGÀ" class="avatar">
+                <div class="brand-info">
+                    <h1 class="brand-name">Bếp Nhà NGÀ <small
+                            style="font-size: 0.7em; font-weight: 400; font-style: italic;">- homemade</small></h1>
+                    <span class="brand-tagline">Làm tại bếp nhà • Không chất bảo quản</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main container">
+
+        <!-- View 1: Product -->
+        <section id="product-view" class="view active">
+            <div class="product-card">
+                <div class="slider-container">
+                    <div class="slider">
+                        <img src="materials/product-1.jpg" alt="Chân gà sả tắc 1" class="slide-img">
+                        <img src="materials/product-2.jpg" alt="Chân gà sả tắc 2" class="slide-img">
+                    </div>
+                    <div class="slider-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+
+                <div class="product-details">
+                    <h2 class="product-title">Chân Gà Sả Tắc Đặc Biệt</h2>
+                    <div class="price-tag">130.000đ <span class="unit">/ hũ</span></div>
+                    <p class="product-desc">
+                        Giòn, ngon, thấm vị. Chua cay mặn ngọt hài hòa.
+                        Làm mồi nhậu hay ăn vặt đều "nhức nách"!
+                    </p>
+
+                    <div class="quantity-control">
+                        <button class="qty-btn minus" aria-label="Giảm số lượng">-</button>
+                        <span class="qty-value" id="qty-display">1</span>
+                        <button class="qty-btn plus" aria-label="Tăng số lượng">+</button>
+                    </div>
+
+                    <div class="total-price-preview">
+                        Tổng tiền: <span id="total-price">130.000đ</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bottom-action">
+                <button id="btn-to-order" class="btn-primary">
+                    ĐẶT HÀNG NGAY
+                </button>
+            </div>
+        </section>
+
+        <!-- View 2: Order Form -->
+        <section id="order-view" class="view">
+            <div class="view-header">
+                <button class="btn-back" id="back-to-product">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <h2>Thông tin giao hàng</h2>
+            </div>
+
+            <form id="order-form" class="order-form">
+                <div class="order-summary-card">
+                    <h3>Đơn hàng của bạn</h3>
+                    <div class="summary-row">
+                        <span>Sản phẩm:</span>
+                        <span>Chân Gà Sả Tắc</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Số lượng:</span>
+                        <span id="summary-qty">1 hũ</span>
+                    </div>
+                    <div class="summary-divider"></div>
+                    <div class="summary-row total">
+                        <span>Thành tiền:</span>
+                        <span id="summary-total">130.000đ</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="fullname">Họ và tên</label>
+                    <input type="text" id="fullname" name="fullname" required placeholder="Nhập họ tên của bạn">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Số điện thoại</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="Nhập số điện thoại" maxlength="10"
+                        pattern="[0-9]{10}" title="Vui lòng nhập đúng 10 chữ số">
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Địa chỉ nhận hàng</label>
+                    <textarea id="address" name="address" required rows="3"
+                        placeholder="Số nhà, tên đường, phường/xã..."></textarea>
+                </div>
+
+                <div class="bottom-action">
+                    <button type="submit" class="btn-primary">
+                        XÁC NHẬN & THANH TOÁN
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- View 3: Payment (QR Code) -->
+        <section id="payment-view" class="view">
+            <div class="view-header">
+                <button class="btn-back" id="back-to-order">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <h2>Thanh toán</h2>
+            </div>
+
+            <div class="payment-card">
+                <div class="success-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        class="check-icon">
+                        <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                </div>
+                <h3>Đơn hàng đã được ghi nhận!</h3>
+                <p>Vui lòng quét mã QR dưới đây để thanh toán hoàn tất đơn hàng.</p>
+
+                <div class="qr-container">
+                    <img src="https://img.vietqr.io/image/970415-113366668888-compact.png" alt="Mã QR Thanh Toán"
+                        class="qr-code">
+                </div>
+
+                <div class="payment-details">
+                    <div class="manual-transfer-info">
+                        <h4>Bạn hãy quét mã QR trên hoặc chuyển khoản thủ công</h4>
+
+                        <div class="info-row">
+                            <span class="label">Ngân hàng:</span>
+                            <span class="value">VietABank (VAB)</span>
+                        </div>
+
+                        <div class="info-row">
+                            <span class="label">Số tài khoản:</span>
+                            <div class="value-group">
+                                <span class="value highlight" id="manual-account-no">00125223</span>
+                                <button class="copy-btn" onclick="copyToClipboard('manual-account-no')"
+                                    aria-label="Copy">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="info-row">
+                            <span class="label">Chủ tài khoản:</span>
+                            <span class="value uppercase">NGUYEN THI TU ANH</span>
+                        </div>
+
+                        <div class="info-row">
+                            <span class="label">Số tiền:</span>
+                            <div class="value-group">
+                                <span class="value highlight" id="payment-amount">130.000đ</span>
+                                <button class="copy-btn" onclick="copyToClipboard('manual-amount-raw')"
+                                    aria-label="Copy">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <!-- Hidden input to hold raw number for copying -->
+                            <input type="hidden" id="manual-amount-raw" value="130000">
+                        </div>
+
+                        <div class="info-row">
+                            <span class="label">Nội dung:</span>
+                            <div class="value-group">
+                                <span class="value highlight" id="payment-content">SDT - TEN</span>
+                                <button class="copy-btn" onclick="copyToClipboard('payment-content')" aria-label="Copy">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="note">Sau khi chuyển khoản, Bếp Nhà NGÀ sẽ liên hệ xác nhận và giao hàng sớm nhất!</p>
+            </div>
+
+            <div class="bottom-action">
+                <a href="https://m.me/MamiCuO" target="_blank" class="btn-secondary">
+                    Nhắn tin xác nhận (Messenger)
+                </a>
+                <button id="btn-home" class="btn-text">
+                    Quay về trang chủ
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="contact-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path
+                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                </svg>
+                <a href="tel:0909222333">0909 222 333</a>
+            </div>
+            <div class="contact-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                </svg>
+                <a href="https://m.me/MamiCuO" target="_blank">Bếp Nhà NGÀ</a>
+            </div>
+            <div class="contact-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+                <a href="https://zalo.me/0909222333" target="_blank">Zalo: 0909 222 333</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

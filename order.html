@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh Sách Đơn Hàng - Mami Tú Anh</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #FF6B00;
+            --bg-color: #F8F5F2;
+            --surface-color: #FFFFFF;
+            --text-primary: #1F1A17;
+            --border-radius: 8px;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: var(--surface-color);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            /* Enable horizontal scroll */
+            overflow-x: auto;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .order-table {
+            width: 100%;
+            border-collapse: collapse;
+            /* Ensure table is wide enough to trigger scroll on small screens */
+            min-width: 800px;
+        }
+
+        .order-table th,
+        .order-table td {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+            vertical-align: middle;
+        }
+
+        .order-table th {
+            font-weight: 700;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            white-space: nowrap;
+        }
+
+        .order-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .empty-state {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            padding: 20px;
+        }
+
+        /* Checkbox Styling */
+        .status-checkbox {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: var(--primary-color);
+        }
+
+        /* Row style when delivered */
+        .order-row.delivered td {
+            color: #aaa;
+            text-decoration: line-through;
+        }
+
+        .order-row.delivered td:last-child {
+            /* Keep checkbox normal */
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Danh Sách Đơn Hàng</h1>
+        <table class="order-table">
+            <thead>
+                <tr>
+                    <th>Họ và Tên</th>
+                    <th>Số Điện Thoại</th>
+                    <th>Địa Chỉ</th>
+                    <th>Số Lượng</th>
+                    <th>Thành Tiền</th>
+                    <th style="text-align: center;">Đã giao</th>
+                </tr>
+            </thead>
+            <tbody id="order-list">
+                <!-- Data will be populated here -->
+                <tr class="empty-state">
+                    <td colspan="6">Chưa có đơn hàng nào được ghi nhận.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        const loadOrders = () => {
+            const savedOrders = JSON.parse(localStorage.getItem('mami_orders') || '[]');
+            const tbody = document.getElementById('order-list');
+
+            if (savedOrders.length > 0) {
+                tbody.innerHTML = ''; // Clear empty state
+
+                savedOrders.forEach((order, index) => {
+                    const tr = document.createElement('tr');
+                    tr.className = 'order-row ' + (order.delivered ? 'delivered' : '');
+
+                    tr.innerHTML = `
+                        <td>${order.name}</td>
+                        <td>${order.phone}</td>
+                        <td>${order.address || ''}</td>
+                        <td>${order.quantity} hũ</td>
+                        <td>${new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(order.total)}</td>
+                        <td style="text-align: center;">
+                            <input type="checkbox" class="status-checkbox" data-index="${index}" ${order.delivered ? 'checked' : ''}>
+                        </td>
+                     `;
+                    tbody.appendChild(tr);
+                });
+
+                // Attach event listeners to checkboxes
+                document.querySelectorAll('.status-checkbox').forEach(checkbox => {
+                    checkbox.addEventListener('change', (e) => {
+                        const index = e.target.getAttribute('data-index');
+                        toggleDeliveryStatus(index, e.target.checked);
+                    });
+                });
+            }
+        };
+
+        const toggleDeliveryStatus = (index, isDelivered) => {
+            const savedOrders = JSON.parse(localStorage.getItem('mami_orders') || '[]');
+            if (savedOrders[index]) {
+                savedOrders[index].delivered = isDelivered;
+                localStorage.setItem('mami_orders', JSON.stringify(savedOrders));
+                loadOrders(); // Re-render to update styles
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', loadOrders);
+    </script>
+</body>
+
+</html>

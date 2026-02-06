@@ -15,7 +15,7 @@ các thông tin liên hệ ở footer gồm số diện thoại: 0909222333, fac
 
 tạo dùm mình một danh trang danh sách mua hàng (order.html), sẽ gồm tên, số diện thoại, số lượng đặt, thành tiền, địa chỉ nhận hàng (của người dùng đã nhập trước đó).
 
-phần navigation: sẽ có là Sản phẩm > Thông tin giao hàng > Thanh toán.
+phần navigation: sẽ có là Trang chủ > Sản phẩm > Thông tin giao hàng > Thanh toán.
 
 
 các yêu cầu khác:

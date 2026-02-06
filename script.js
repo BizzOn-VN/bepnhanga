@@ -8,7 +8,7 @@ const GITHUB_CONFIG = {
     PATH: 'orders.json',
     // LƯU Ý: Để lộ Token trong code client-side là không bảo mật tuyệt đối cho các dự án lớn.
     // Với dự án cá nhân nhỏ, có thể chấp nhận được, hoặc bạn có thể nhập thủ công mỗi khi vào trang Admin.
-    TOKEN: '' // Điền token của bạn vào đây (bắt đầu bằng ghp_...)
+    TOKEN: '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' // Điền token của bạn vào đây (bắt đầu bằng ghp_...)
 };
 
 // --- DATA MANAGEMENT ---

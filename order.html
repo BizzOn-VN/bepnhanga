@@ -120,52 +120,7 @@
         </table>
     </div>
 
-    <script>
-        const loadOrders = () => {
-            const savedOrders = JSON.parse(localStorage.getItem('mami_orders') || '[]');
-            const tbody = document.getElementById('order-list');
-
-            if (savedOrders.length > 0) {
-                tbody.innerHTML = ''; // Clear empty state
-
-                savedOrders.forEach((order, index) => {
-                    const tr = document.createElement('tr');
-                    tr.className = 'order-row ' + (order.delivered ? 'delivered' : '');
-
-                    tr.innerHTML = `
-                        <td>${order.name}</td>
-                        <td>${order.phone}</td>
-                        <td>${order.address || ''}</td>
-                        <td>${order.quantity} hũ</td>
-                        <td>${new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(order.total)}</td>
-                        <td style="text-align: center;">
-                            <input type="checkbox" class="status-checkbox" data-index="${index}" ${order.delivered ? 'checked' : ''}>
-                        </td>
-                     `;
-                    tbody.appendChild(tr);
-                });
-
-                // Attach event listeners to checkboxes
-                document.querySelectorAll('.status-checkbox').forEach(checkbox => {
-                    checkbox.addEventListener('change', (e) => {
-                        const index = e.target.getAttribute('data-index');
-                        toggleDeliveryStatus(index, e.target.checked);
-                    });
-                });
-            }
-        };
-
-        const toggleDeliveryStatus = (index, isDelivered) => {
-            const savedOrders = JSON.parse(localStorage.getItem('mami_orders') || '[]');
-            if (savedOrders[index]) {
-                savedOrders[index].delivered = isDelivered;
-                localStorage.setItem('mami_orders', JSON.stringify(savedOrders));
-                loadOrders(); // Re-render to update styles
-            }
-        };
-
-        document.addEventListener('DOMContentLoaded', loadOrders);
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>

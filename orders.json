@@ -1,20 +1,20 @@
 [
   {
-    "name": "hung 3",
-    "phone": "0998799922",
-    "address": "\\số nhà",
-    "quantity": 3,
-    "total": 390000,
-    "date": "2026-02-06T04:27:46.517Z",
+    "name": "Nguyễn Văn A",
+    "phone": "0909123456",
+    "address": "123 Đường ABC, Quận 1",
+    "quantity": 2,
+    "total": 260000,
+    "date": "2024-02-06T10:00:00.000Z",
     "delivered": false
   },
   {
-    "name": "hung",
-    "phone": "0998799922",
-    "address": "\\số nhà",
-    "quantity": 2,
-    "total": 260000,
-    "date": "2026-02-06T04:20:09.833Z",
-    "delivered": false
+    "name": "Trần Thị B",
+    "phone": "0987654321",
+    "address": "456 Đường XYZ, Quận 3",
+    "quantity": 1,
+    "total": 130000,
+    "date": "2024-02-05T14:30:00.000Z",
+    "delivered": true
   }
 ]
